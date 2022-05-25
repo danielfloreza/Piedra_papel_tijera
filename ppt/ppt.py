@@ -1,30 +1,41 @@
 import random
 def show(result):
-    print(result)
     if result is False:
         print("¡Empate!\n")
         run()
     else:
-        print("Ganó quien saco: "+str(result)+".\n")
+        if result==str(1):
+            result = "Piedra.\n"
+        if result== str(2):
+            result = "Papel.\n"
+        if result == str(3) :
+            result = "Tijeras.\n"
+
+        print("Ganó quien saco: "+str(result))
         run()
     
 
 def play(option_computer_r,option_user_r):
     print("Yo escogí: "+str(option_computer_r))
     print("Tu escogiste: "+str(option_user_r))
-    win_rock=[str(1),str(3)]
-    win_paper=[str(2),str(1)]
-    win_scissors=[str(3),str(2)]
+    win_rock_computer=[str(1),str(3)]
+    win_rock_user=[str(3),str(1)]
+    win_paper_computer=[str(2),str(1)]
+    win_paper_user=[str(1),str(2)]
+    win_scissors_computer=[str(3),str(2)]
+    win_scissors_user=[str(2),str(3)]
+    every_options_computer=[win_rock_computer,win_paper_computer,win_scissors_computer]
+    every_options_user=[win_rock_user,win_paper_user,win_scissors_user]
+    winner=False
     
     result=[str(option_computer_r),str(option_user_r)]
-    
-    if result != win_rock and result != win_paper and result != win_scissors:
-        return False
-    else:
-        if result[0]==option_computer_r:
-            return(option_computer_r)
-        else:
-            return(option_user_r)
+    for option in every_options_computer:
+        if result== option:
+            winner=option[0]
+    for option in every_options_user:
+        if result==option:
+            winner=option[1]
+    return winner
 
 
 def option_user():
